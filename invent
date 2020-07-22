@@ -1,0 +1,18 @@
+#!/usr/bin/env node
+
+var program = require('commander');
+var invent = require('../index.js');
+
+program
+    .usage('[options] [destination]')
+    .option('-f, --force', 'force on non-empty destination')
+    .option('--no-color', 'no colored output')
+    .parse(process.argv);
+
+var options = {
+    name: program.args.shift() || '.',
+    color: program.color,
+    force: program.force
+};
+
+invent.create(options);
